@@ -1,2 +1,0 @@
-# chidong-club-web
-chidong
