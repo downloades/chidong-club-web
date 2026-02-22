@@ -1,47 +1,18 @@
-<!doctype html>
+<!Doctype html>
 <html lang="ko">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>동아리 웹코딩 1차시</title>
-  <style>
-    body { font-family: system-ui, sans-serif; margin: 24px; }
-    .card {
-      max-width: 520px;
-      border: 1px solid #ddd;
-      border-radius: 16px;
-      padding: 16px;
-    }
-    .btn {
-      border: 0;
-      padding: 10px 14px;
-      border-radius: 12px;
-      cursor: pointer;
-    }
-    .btn:hover { transform: translateY(-1px); }
-  </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>1차시</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1 id="title">웹코딩 1차시</h1>
+  <h1>1차시-버튼과 상호작용</h1>
 
-  <div class="card">
-    <p><b>오늘 목표:</b> 저장하면 화면이 바뀌는 걸 경험한다.</p>
+  <p>count: <span id="count">0</span></p>
+  <button id="plus">+1</button>
+  <button id="reset">reset</button>
 
-    <p id="message">버튼을 눌러보세요 🙂</p>
-
-    <button class="btn" id="btnChange">눌러서 바꾸기</button>
-  </div>
-
-  <script>
-    // 1) 요소 잡기 (DOM)
-    const messageEl = document.querySelector("#message");
-    const btn = document.querySelector("#btnChange");
-
-    // 2) 이벤트 걸기
-    btn.addEventListener("click", () => {
-      // 3) 화면 바꾸기
-      messageEl.textContent = "바뀌었다! 이제 시작이다 🚀";
-    });
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
