@@ -1,25 +1,47 @@
-const btnTheme = document.querySelector("#btnTheme");
-const btnPick = document.querySelector("#btnPick");
-const pickEl = document.querySelector("#pick");
+const msg = document.querySelector("#msg");
+const msEl = document.querySelector("#ms");
 
-// 다크모드 토글
-btnTheme.addEventListener("click", () => {
-  document.body.classList.toggle("dark");
+const startBtn = document.querySelector("#start");
+const tapBtn = document.querySelector("#tap");
+const resetBtn = document.querySelector("#reset");
 
-  const isDark = document.body.classList.contains("dark");
-  btnTheme.textContent = isDark ? "☀️ 라이트모드" : "🌙 다크모드";
+let ready = false;
+let t0 = 0;
+let timerId = null;
+
+function reset(){
+  clearTimeout(timerId);
+  timerId = null;
+  ready = false;
+  t0 = 0;
+  msg.textContent = "start 누르기";
+  msEl.textContent = "-";
+  tapBtn.disabled = true;
+}
+
+startBtn.addEventListener("click", () => {
+  reset();
+  msg.textContent = "wait...";
+  const delay = 1000 + Math.floor(Math.random() * 2000);
+
+  timerId = setTimeout(() => {
+    ready = true;
+    t0 = performance.now();
+    msg.textContent = "NOW!";
+    tapBtn.disabled = false;
+  }, delay);
 });
 
-// 랜덤 추천
-const items = [
-  "오늘의 벌칙: 팔굽혀펴기 10개",
-  "오늘의 미션: 팀원 1명 칭찬하기",
-  "오늘의 추천: 간식 먹기 🍪",
-  "오늘의 추천: 노래 한 곡 듣기 🎧",
-  "오늘의 미션: 5분 정리정돈"
-];
-
-btnPick.addEventListener("click", () => {
-  const idx = Math.floor(Math.random() * items.length);
-  pickEl.textContent = items[idx];
+tapBtn.addEventListener("click", () => {
+  if (!ready) return;
+  const t1 = performance.now();
+  const diff = Math.round(t1 - t0);
+  msEl.textContent = diff;
+  msg.textContent = "done";
+  ready = false;
+  tapBtn.disabled = true;
 });
+
+resetBtn.addEventListener("click", reset);
+
+reset();
