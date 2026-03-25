@@ -73,9 +73,7 @@ export default function Page(): React.JSX.Element {
           })}
         </section>
 
-        <p style={S.tip}>
-          클릭해도 재생되고, 키보드를 눌러도 재생된다
-        </p>
+        <p style={S.tip}>클릭해도 재생되고, 키보드를 눌러도 재생된다</p>
       </div>
     </main>
   );
@@ -94,7 +92,7 @@ const S: Record<string, React.CSSProperties> = {
     color: "#fff",
   },
   overlay: {
-    maxWidth: 980,
+    maxWidth: 1200,
     margin: "0 auto",
     padding: "48px 24px 56px",
     textAlign: "center",
@@ -133,11 +131,15 @@ const S: Record<string, React.CSSProperties> = {
   },
   grid: {
     marginTop: 30,
-    display: "grid",
-    gridTemplateColumns: "repeat(4, 1fr)",
+    display: "flex",
+    flexWrap: "nowrap",
+    justifyContent: "center",
     gap: 16,
+    overflowX: "auto",
+    paddingBottom: 8,
   },
   pad: {
+    flex: "0 0 110px",
     minHeight: 140,
     borderRadius: 20,
     border: "1px solid rgba(255,255,255,0.15)",
